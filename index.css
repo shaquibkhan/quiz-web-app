@@ -1,3 +1,9 @@
+.light-dark-mode{
+    width: 40px;
+    height: 30px;
+    border-radius: 25px;
+    cursor: pointer;
+}
 button {
     border-radius: 5px;
     border: 1px solid transparent;

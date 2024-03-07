@@ -1,5 +1,25 @@
 import { questionWithAnswer } from "./constant.js";
 
+let body = document.querySelector('body');
+body.style.backgroundColor = 'white';
+body.style.color = 'black';
+let darkMode = document.getElementById('darkMode')
+let lightMode = document.getElementById('lightMode')
+
+lightMode.style.display = 'none'
+darkMode.addEventListener('click', ()=>{
+    body.style.backgroundColor = 'black';
+    body.style.color = 'white';
+    darkMode.style.display = 'none'
+    lightMode.style.display = 'block'
+
+})
+lightMode.addEventListener('click', ()=>{
+    body.style.backgroundColor = 'white';
+    body.style.color = 'black';
+    lightMode.style.display = 'none'
+    darkMode.style.display = 'block'
+})
 let questionContainer = document.querySelector('.question-container');
 let endGame = document.getElementById('endGame');
 let startGame = document.getElementById('startGame');
