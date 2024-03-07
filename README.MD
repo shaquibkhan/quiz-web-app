@@ -1,0 +1,1 @@
+- If we need to implement addEventListener on multiple button then we have to loop through it.
