@@ -76,8 +76,8 @@ input {
 
 .btn {
     display: flex;
-    justify-content: space-between;
-    gap: 18px;
+    justify-content: center;
+    gap: 38px;
 }
 
 .ques-score-row {
