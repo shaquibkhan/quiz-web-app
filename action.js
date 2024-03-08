@@ -4,7 +4,7 @@ let body = document.querySelector('body');
 let registerButton = document.querySelector('#registerButton');
 let input = document.querySelector('input');
 let showName = document.querySelector('#showName');
-let TotalScore =  0;
+let finalScore = document.querySelector('.final-score')
 
 registerButton.addEventListener('click',()=>{
     
@@ -19,14 +19,14 @@ const darkLightMode = ()=> {
     let lightMode = document.getElementById('lightMode')
     lightMode.style.display = 'none'
 darkMode.addEventListener('click', ()=>{
-    body.style.backgroundColor = 'black';
+    body.style.backgroundColor = '#1D1D1D';
     body.style.color = 'white';
     darkMode.style.display = 'none'
     lightMode.style.display = 'block'
 
 })
 lightMode.addEventListener('click', ()=>{
-    body.style.backgroundColor = 'white';
+    body.style.backgroundColor = `#f5f1fe`;
     body.style.color = 'black';
     lightMode.style.display = 'none'
     darkMode.style.display = 'block'
@@ -52,13 +52,15 @@ function displayQuestion() {
 
     for (let i = 0; i < questionWithAnswer.length; i++) {
         html += `
-            <div class="question-row">${questionWithAnswer[i].name}</div>
-            <div key="${i}">
-                <button class="ques-btn">${questionWithAnswer[i].optionOne}</button>
-                <button class="ques-btn">${questionWithAnswer[i].optionTwo}</button>
-                <button class="ques-btn">${questionWithAnswer[i].optionThree}</button>
-                <button class="ques-btn">${questionWithAnswer[i].optionFour}</button>
-            </div>
+           <div class="question-dashboard">
+           <div class="question-row">${questionWithAnswer[i].name}</div>
+           <div  key="${i}">
+               <button class="ques-btn">${questionWithAnswer[i].optionOne}</button>
+               <button class="ques-btn">${questionWithAnswer[i].optionTwo}</button>
+               <button class="ques-btn">${questionWithAnswer[i].optionThree}</button>
+               <button class="ques-btn">${questionWithAnswer[i].optionFour}</button>
+           </div>
+           </div>
         `;
      
     }
@@ -103,15 +105,19 @@ startGame.addEventListener('click', () => {
     registerButton.style.display = 'block'
     endGame.style.display = 'block';
     input.value = ''
+    questionContainer.style.display = 'block'
+    finalScore.style.display = 'none'
 });
 
 endGame.addEventListener('click', () => {
     console.log("quiz ended", marks);
-    questionContainer.innerHTML = `<h1>Quiz ended you scored ${marks}</h1>`;
+    finalScore.innerHTML = `<h1>Quiz ended your score is ${marks} </h1>`;
     startGame.style.display = 'block';
     endGame.style.display = 'none';
     showName.innerHTML = ''
     input.style.display = 'none'
     registerButton.style.display = 'none'
+    questionContainer.style.display = 'none'
+    finalScore.style.display = 'block'
     input.value = ''
 });

@@ -1,3 +1,7 @@
+body{
+    background-color: #f5f1fe;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 .light-dark-mode{
     width: 40px;
     height: 30px;
@@ -11,7 +15,7 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #f9f9f9;
+    background-color: #ececec;
     cursor: pointer;
     transition: border-color 0.25s;
   }
@@ -53,5 +57,16 @@ input{
 }
 .btn{
     display: flex;
+    justify-content: center;
     gap: 18px;
+}
+.question-dashboard{
+    margin-left: 25%;
+    padding: 15px 8px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.ques-score-row{
+    display: flex;
+    justify-content: center;
 }
