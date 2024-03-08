@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUIZ-APP</title>
     <link rel="stylesheet" href="index.css">
+    
 </head>
 <body>
     <div>
@@ -12,9 +13,17 @@
             <img id="darkMode" class="light-dark-mode" src="./assets/dark-mode.jpeg" alt="" />
             <img id="lightMode" class="light-dark-mode" src="./assets/light-mode.png" alt="" />
         </header>
+        <div class="input-box">
+            <input type="text" placeholder="enter your name"/>
+            <button id="registerButton">Register</button>
+            <h2 id="showName"></h2>
+        </div>
         <h2 class="question-container"></h2>
-        <button id="startGame">RESTART</button>
-        <button id="endGame">END</button>
+        <div class="btn">
+            <button id="startGame">RESTART</button>
+            <button id="endGame">END</button>
+        </div>
+       
     </div>
     <script type="module" src="action.js"></script>
     <script type="module" src="constant.js"></script>

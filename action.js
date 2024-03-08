@@ -1,12 +1,23 @@
 import { questionWithAnswer } from "./constant.js";
 
 let body = document.querySelector('body');
-body.style.backgroundColor = 'white';
-body.style.color = 'black';
-let darkMode = document.getElementById('darkMode')
-let lightMode = document.getElementById('lightMode')
+let registerButton = document.querySelector('#registerButton');
+let input = document.querySelector('input');
+let showName = document.querySelector('#showName');
+let TotalScore =  0;
 
-lightMode.style.display = 'none'
+registerButton.addEventListener('click',()=>{
+    
+    showName.innerHTML = `Hello, ${input.value}`;
+    console.log(showName);
+    input.style.display = 'none'
+    registerButton.style.display = 'none'
+})
+
+const darkLightMode = ()=> {
+    let darkMode = document.getElementById('darkMode')
+    let lightMode = document.getElementById('lightMode')
+    lightMode.style.display = 'none'
 darkMode.addEventListener('click', ()=>{
     body.style.backgroundColor = 'black';
     body.style.color = 'white';
@@ -20,6 +31,9 @@ lightMode.addEventListener('click', ()=>{
     lightMode.style.display = 'none'
     darkMode.style.display = 'block'
 })
+}
+darkLightMode()
+
 let questionContainer = document.querySelector('.question-container');
 let endGame = document.getElementById('endGame');
 let startGame = document.getElementById('startGame');
@@ -27,10 +41,10 @@ let startGame = document.getElementById('startGame');
 let html = '';
 let marks = 0;
 
-function updateButtonVisibility() {
-    startGame.style.display = 'none';
-    endGame.style.display = marks === questionWithAnswer.length ? 'block' : 'none';
-}
+// function updateButtonVisibility() {
+//     startGame.style.display = 'none';
+//     endGame.style.display = marks === questionWithAnswer.length ? 'block' : 'none';
+// }
 
 function displayQuestion() {
     html = ''; // Reset the html variable
@@ -38,7 +52,7 @@ function displayQuestion() {
 
     for (let i = 0; i < questionWithAnswer.length; i++) {
         html += `
-            <div>${questionWithAnswer[i].name}</div>
+            <div class="question-row">${questionWithAnswer[i].name}</div>
             <div key="${i}">
                 <button class="ques-btn">${questionWithAnswer[i].optionOne}</button>
                 <button class="ques-btn">${questionWithAnswer[i].optionTwo}</button>
@@ -46,6 +60,7 @@ function displayQuestion() {
                 <button class="ques-btn">${questionWithAnswer[i].optionFour}</button>
             </div>
         `;
+     
     }
 
     questionContainer.innerHTML = html;
@@ -59,31 +74,44 @@ function displayQuestion() {
             console.log(currentQuestion.answer);
 
             if (e.target.innerHTML === currentQuestion.answer) {
-                console.log(`Correct answer !!! You got ${marks + 1} score`);
+                console.log(`Correct answer !!! You got ${marks+1} score`);
                 button.style.backgroundColor = 'green';
-            //    return marks+1
+                marks +=1;
             } else {
                 console.log(`Wrong answer !!! You got ${marks} score`);
                 button.style.backgroundColor = 'red';
                 // return marks
+               return marks
             }
 
-            marks++;
-            updateButtonVisibility();
+            
+            // updateButtonVisibility();
         });
     }
 }
+
+
+
 
 displayQuestion();
 startGame.addEventListener('click', () => {
     console.log("quiz restarted");
     marks = 0;
     displayQuestion();
+    showName.innerHTML = ''
+    input.style.display = 'block'
+    registerButton.style.display = 'block'
+    endGame.style.display = 'block';
+    input.value = ''
 });
 
 endGame.addEventListener('click', () => {
-    console.log("quiz ended");
-    questionContainer.innerHTML = `<h1>Quiz ended </h1>`;
+    console.log("quiz ended", marks);
+    questionContainer.innerHTML = `<h1>Quiz ended you scored ${marks}</h1>`;
     startGame.style.display = 'block';
     endGame.style.display = 'none';
+    showName.innerHTML = ''
+    input.style.display = 'none'
+    registerButton.style.display = 'none'
+    input.value = ''
 });

@@ -33,3 +33,25 @@ button {
     display: flex;
     gap: 20px;
 }
+.input-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    width: 20rem;
+    height: 1.5rem;
+    border-radius: 25px;
+    text-align: center; /* Center-align placeholder */
+    padding-left: 10px; /* Add left padding for entered text */
+}
+/* Add a style for the disabled button */
+#registerButton:disabled {
+    background-color: #ccc; /* Change the background color */
+    color: #666; /* Change the text color */
+    cursor: not-allowed; /* Change the cursor */
+}
+.btn{
+    display: flex;
+    gap: 18px;
+}
